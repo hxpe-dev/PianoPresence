@@ -47,6 +47,14 @@ Then run:
 ```bash
 python main.py
 ```
+If you want to build your `.exe` file, you will need to install `pyinstaller`:
+```bash
+pip install pyinstaller
+```
+Then run:
+```bash
+pyinstaller main.spec
+```
 
 ## Usage
 - On first run, select your MIDI device when prompted.

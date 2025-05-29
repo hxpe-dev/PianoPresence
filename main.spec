@@ -2,8 +2,8 @@
 
 
 a = Analysis(
-    ['main.py'],
-    pathex=[],
+    ['src/__main__.py'],
+    pathex=['src'],
     binaries=[],
     datas = [
         ('assets/icon.png', 'assets'),
@@ -29,7 +29,7 @@ exe = EXE(
     a.binaries,
     a.datas,
     [],
-    name='main',
+    name='PianoPresence',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
