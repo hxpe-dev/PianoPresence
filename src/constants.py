@@ -1,6 +1,18 @@
+import os
 from collections import deque
 
-CONFIG_FILE = "config.json"
+APP_NAME = "PianoPresence"
+
+if os.name == "nt":  # Windows
+    base_dir = os.getenv("APPDATA")
+else:  # macOS/Linux
+    base_dir = os.path.expanduser("~/.config")
+
+CONFIG_DIR = os.path.join(base_dir, APP_NAME)
+os.makedirs(CONFIG_DIR, exist_ok=True)
+
+CONFIG_FILE = os.path.join(CONFIG_DIR, "config.json")
+
 DISCORD_CLIENT_ID = '1377570118908772352'
 AFK_TIMEOUT = 10
 NOTE_WINDOW_SECONDS = 5

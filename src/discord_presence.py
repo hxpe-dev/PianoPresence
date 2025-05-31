@@ -1,4 +1,5 @@
 from pypresence import Presence
+from config import load_config
 from constants import DISCORD_CLIENT_ID, rpc, last_update
 from log import log
 
@@ -12,11 +13,21 @@ def update_presence(state=None, details=None, start_time=None, small_image=None,
         last_update["state"] = state
         last_update["details"] = details
 
+        config = load_config()
+        buttons = [{"label": "Get PianoPresence (GitHub)", "url": "https://github.com/hxpe-dev/PianoPresence"}]
+
+        # Add custom button if valid
+        label = config.get("custom_button_label", "").strip()
+        url = config.get("custom_button_url", "").strip()
+        if label and url:
+            buttons.append({"label": label, "url": url})
+
         payload = {
             "large_image": "piano",
             "large_text": "Piano Presence 🎹",
-            "buttons": [{"label": "View on GitHub", "url": "https://github.com/hxpe-dev/PianoPresence"}]
+            "buttons": buttons
         }
+
         if state: payload["state"] = state
         if details: payload["details"] = details
         if start_time: payload["start"] = int(start_time)

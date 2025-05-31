@@ -14,7 +14,7 @@ def toggle_windows_startup(enable: bool):
     import sys
     key = winreg.HKEY_CURRENT_USER
     reg_path = r"Software\Microsoft\Windows\CurrentVersion\Run"
-    app_name = "MIDI Presence"
+    app_name = "Piano Presence"
     exe_path = sys.executable
 
     with winreg.OpenKey(key, reg_path, 0, winreg.KEY_ALL_ACCESS) as reg:
